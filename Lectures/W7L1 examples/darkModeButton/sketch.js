@@ -1,4 +1,4 @@
-let darkMode, lightMode, currentMode;
+let darkMode, lightMode;
 const msg = "The quick brown fox jumps over the lazy dog.";
 
 // Variables related to the button
@@ -27,6 +27,9 @@ function draw() {
     text(msg, 10, 10, width - 20, height - 20);
 }
 
+/**
+ * Configures the button's position and basic styling
+ */
 function buttonSetup() {
     modeButton = createButton(buttonText);
     const mainContainer = select("main");
