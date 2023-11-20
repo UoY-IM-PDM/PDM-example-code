@@ -5,13 +5,14 @@ function setup() {
     rectMode(CENTER);
     fft = new p5.FFT(0.8, 512);
     mic = new p5.AudioIn();
+    // Delays the start of the microphone until the user interacts
+    getAudioContext().suspend();
     mic.start();
     fft.setInput(mic);
 }
 
 function draw() {
     background(0);
-    console.log("printing a message makes this work?");
     rect(width / 2, height / 2, mic.getLevel() * width, 100);
     let spectrum = fft.analyze();
     let x = (width - spectrum.length) / 2;
@@ -21,4 +22,9 @@ function draw() {
         line(x, (height / 2) - fftScaled, x, (height / 2) + fftScaled);
         x++;
     }
+}
+
+function mouseClicked() {
+    // Confirms that the user has started the audio
+    userStartAudio();
 }
