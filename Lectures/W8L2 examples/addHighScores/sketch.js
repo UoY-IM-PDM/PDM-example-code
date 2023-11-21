@@ -78,12 +78,13 @@ function calculateScoresHeight(numScores) {
 
 /**
  * Inserts a new HighScore into the array in sorted position. Returns 
- * a new copy of the array.
+ * a new copy of the array. This function does the same as the version 
+ * below, it just uses fancier JS syntax!
  * @param {HighScore} newScore The new HighScore to insert.
  * @param {HighScore[]} savedScores The array of existing HighScores.
  * @returns {HighScore[]} The array of HighScores with the new HighScore inserted.
  */
-function addNewScore(newScore, savedScores) {
+function addNewScore_Fancy(newScore, savedScores) {
     for (let i = 0; i < savedScores.length; i++) {
         if (savedScores[i].score <= newScore.score) {
             /**
@@ -96,6 +97,29 @@ function addNewScore(newScore, savedScores) {
     }
     savedScores.push(newScore);
     return savedScores;
+}
+
+/**
+ * Inserts a new HighScore into the array in sorted position. Returns 
+ * a new copy of the array.
+ * @param {HighScore} newScore The new HighScore to insert.
+ * @param {HighScore[]} savedScores The array of existing HighScores.
+ * @returns {HighScore[]} The array of HighScores with the new HighScore inserted.
+ */
+function addNewScore(newScore, savedScores) {
+    let newScores = [];
+    let indexFound = false;
+    for (let i = 0; i < savedScores.length; i++) {
+        if (savedScores[i].score < newScore.score && !indexFound) {
+            newScores.push(newScore);
+            indexFound = true;
+        }
+        newScores.push(savedScores[i]);
+    }
+    if (!indexFound) {
+        newScores.push(newScore);
+    }
+    return newScores;
 }
 
 /**
