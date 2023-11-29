@@ -82,6 +82,14 @@ function processMove() {
 function canMove(xDir, yDir) {
     let newX = player.x + xDir;
     let newY = player.y + yDir;
-    return newX + player.size <= obstacle.x || newX >= obstacle.x + obstacle.width
-        || newY + player.size <= obstacle.y || newY >= obstacle.y + obstacle.height;
+    if (newX < 0 || newX > width - player.size || newY < 0 || newY > height - player.size) {
+        return false
+    }
+    for (let obstacle of obstacles) {
+        if (!(newX + player.size <= obstacle.x || newX >= obstacle.x + obstacle.width
+            || newY + player.size <= obstacle.y || newY >= obstacle.y + obstacle.height)) {
+            return false;
+        }
+    }
+    return true;
 }
