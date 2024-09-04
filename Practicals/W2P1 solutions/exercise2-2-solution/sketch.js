@@ -1,13 +1,14 @@
 function setup() {
-    createCanvas(800, 800);
+    // createCanvas(800, 800);
+    createCanvas(600, 400);
     rectMode(CENTER);
 }
 
 function draw() {
     let centreX = mouseX; // 400
     let centreY = mouseY; // 350
-    background(255);
-    fill(170);
+    background(255, 210, 0);
+    fill(163, 173, 180);
     // Head
     rect(centreX, centreY - 115, 60, 70);
     // Neck
@@ -37,13 +38,13 @@ function draw() {
     rect(centreX - 20, centreY + 130, 10, 80);
     arc(centreX - 20, centreY + 170, 30, 20, PI, TWO_PI, CHORD);
     // Eyes
-    fill(207, 250, 23);
+    fill(120, 191, 38);
     arc(centreX - 15, centreY - 100, 20, 30, PI, TWO_PI, CHORD);
     arc(centreX + 15, centreY - 100, 20, 30, PI, TWO_PI, CHORD);
     // Antennae
     line(centreX + 30, centreY - 120, centreX + 50, centreY - 130);
     line(centreX - 30, centreY - 120, centreX - 50, centreY - 130);
-    fill(255, 0, 0);
+    fill(253, 80, 0);
     circle(centreX + 50, centreY - 130, 10);
     circle(centreX - 50, centreY - 130, 10);
 }
